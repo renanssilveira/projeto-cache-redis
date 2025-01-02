@@ -16,11 +16,14 @@ public class EmpresaService {
 
     @Autowired
     private EmpresaRepository empresaRepository;
-    @Cacheable("empresas")
-    public List<Empresa> findAll() {
-        List<Empresa> empresasList = new ArrayList<>();
-        empresasList.addAll((Collection<? extends Empresa>) empresaRepository.findAll());
 
-        return empresasList;
+    @Cacheable("empresas")
+    public List<Empresa> findAllComCache() {
+        return empresaRepository.findAll();
     }
+
+    public List<Empresa> findAll() {
+        return empresaRepository.findAll();
+    }
+
 }
